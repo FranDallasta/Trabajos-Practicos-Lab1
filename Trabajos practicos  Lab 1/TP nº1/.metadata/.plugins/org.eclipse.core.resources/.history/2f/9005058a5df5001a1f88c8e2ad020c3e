@@ -10,8 +10,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "TP1,Calculadora.h"
 
-int main(void) {
-	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
-	return EXIT_SUCCESS;
-}
+float sumar (float A, float b);
+float restar (float A, float B);
+float dividir (float A, float B);
+float multilicar (float A, float B);
+int factorial (int A);
+

@@ -1,6 +1,12 @@
+/*
+ * TP1,Calculadora.h
+ *
+ *  Created on: Sep 6, 2020
+ *      Author: FRANCO
+ */
 
-#include "TP1,Calculadora.h"
-
+#ifndef TP1_CALCULADORA_H_
+#define TP1_CALCULADORA_H_
 
 float sumar (float A, float B)
 {
@@ -49,5 +55,4 @@ int factorial (int A)
 	return factorial;
 }
 
-
-
+#endif /* TP1_CALCULADORA_H_ */
