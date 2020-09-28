@@ -14,7 +14,6 @@ int main(void) {
 	int factorB;
 	int opcion;
 	int flagVacio = 0;
-
 	do{
 		do{
 			printf("\n Ingrese una opcion: \n");
@@ -34,6 +33,7 @@ int main(void) {
 				system("cls");
 			}
 		}while(opcion != 1 && flagVacio == 0);
+
 
 	switch(opcion){
 		case 1:
@@ -95,6 +95,7 @@ int main(void) {
 			printf("\nSaliendo del programa...\n"); //Salida del programa
 			system("pause");
 			return EXIT_SUCCESS;
+
 		}
 	}
 	}while(opcion != 7);

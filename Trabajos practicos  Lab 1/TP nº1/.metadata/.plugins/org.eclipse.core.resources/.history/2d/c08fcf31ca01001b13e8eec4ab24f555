@@ -13,10 +13,8 @@ int main(void) {
 	int factorA;
 	int factorB;
 	int opcion;
-	int flagVacio = 0;
-
 	do{
-		do{
+
 			printf("\n Ingrese una opcion: \n");
 			printf("\n 1) Ingreso de operandos");
 			printf("\n 2) Suma");
@@ -28,12 +26,8 @@ int main(void) {
 			printf("\n\n Ingrese la opcion deseada: ");
 			scanf("%d", &opcion);
 			system("cls");
-			if(opcion != 1 && flagVacio == 0){
-				printf("\nIngrese 2 numeros primeros !\n");
-				system("pause");
-				system("cls");
-			}
-		}while(opcion != 1 && flagVacio == 0);
+
+
 
 	switch(opcion){
 		case 1:
@@ -42,13 +36,14 @@ int main(void) {
 			scanf("%f", &A);
 			printf("\n Ingrese un numero B= ");
 			scanf("%f", &B);
-			flagVacio =1;
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 2:		//Funciones
 		{
 			suma = sumar(A,B);
-			printf("\nLa suma da %.2f\n", suma);
+			printf("\n La suma da %.2f", suma);
 			system("pause");
 			system("cls");
 			break;
@@ -56,7 +51,7 @@ int main(void) {
 		case 3:
 		{
 			resta= restar (A,B);
-			printf("\nLa resta da %.2f\n", resta);
+			printf("\n La resta da %.2f", resta);
 			system("pause");
 			system("cls");
 			break;
@@ -66,7 +61,7 @@ int main(void) {
 			division = dividir(A,B);
 			if(B!=0)
 			{
-				printf("\nLa division es %.2f\n ", division);
+				printf("\n La division es %.2f ", division);
 			}
 			system("pause");
 			system("cls");
@@ -75,7 +70,7 @@ int main(void) {
 		case 5:
 		{
 			producto = multilicar(A,B);
-			printf("\nEl producto da %.2f\n", producto);
+			printf("\n El producto da %.2f", producto);
 			system("pause");
 			system("cls");
 			break;
@@ -83,18 +78,19 @@ int main(void) {
 		case 6:
 		{
 			factorA = factorial(A);
-			printf("\nEl factorial (A) da %d ", factorA);
+			printf("\n El factorial da %d ", factorA);
 			factorB = factorial(B);
-			printf("\nEl factorial (B) da %d \n", factorB);
+			printf("\n El factorial da %d \n", factorB);
 			system("pause");
 			system("cls");
 			break;
 		}
 		case 7:
 		{
-			printf("\nSaliendo del programa...\n"); //Salida del programa
+			printf("\n Saliendo del programa...\n"); //Salida del programa
 			system("pause");
 			return EXIT_SUCCESS;
+
 		}
 	}
 	}while(opcion != 7);
