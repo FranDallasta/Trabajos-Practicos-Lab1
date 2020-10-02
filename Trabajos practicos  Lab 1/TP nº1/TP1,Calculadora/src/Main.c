@@ -29,7 +29,7 @@ int main(void) {
 			scanf("%d", &opcion);
 			system("cls");
 			if(opcion != 1 && flagVacio == 0){
-				printf("\nIngrese 2 numeros primeros !\n");
+				printf("\nIngrese 2 numeros primero !\n");
 				system("pause");
 				system("cls");
 			}
