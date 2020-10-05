@@ -20,10 +20,10 @@ typedef struct{
 #endif /* ARRAYEMPLOYEES_H_ */
 
 
-void iniciarlizarListado(empleados array[], int LARGO);
+int iniciarlizarListado(empleados array[], int LARGO);
 empleados cargarEmpleado(int i);
-void cargarEmpleadoS(empleados array[], int LARGO);
+int cargarEmpleadoS(empleados array[], int LARGO);
 void mostrarNombre(empleados trabajador);
-void mostrarNombreS(empleados array[], int LARGO);
-void eliminarEmpleado(empleados trabajador[], int i);
-void modificarEmpleado(empleados trabajador[], int i);
+int mostrarNombreS(empleados array[], int LARGO);
+int eliminarEmpleado(empleados trabajador[], int i);
+int modificarEmpleado(empleados trabajador[], int i);
