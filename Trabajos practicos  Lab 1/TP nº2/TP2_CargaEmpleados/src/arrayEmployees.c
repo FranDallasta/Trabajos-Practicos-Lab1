@@ -45,10 +45,10 @@ int buscarEmpty(empleados array[], int LARGO, int* posicion)
 	return retorno;
 }
 
-empleados cargarEmpleado(int i)
+empleados cargarEmpleado()//int i
 {
 	empleados trabajador;
-	trabajador.id = i;
+	//trabajador.id = i;
 	printf("Ingrese el nombre del trabajador: ");
 	fflush(stdin);
 	gets(trabajador.nombre);
@@ -75,8 +75,8 @@ int cargarEmpleadoS(empleados array[], int LARGO, int* i)
 			*i = *i + 1;
 			if(buscarEmpty(array, LARGO, &posicion)==0)
 			{
-				//array[posicion].id = i;
-				array[posicion] =cargarEmpleado(*i);
+				array[posicion].id = *i;
+				array[posicion] =cargarEmpleado();
 			}
 			else
 			{
@@ -118,19 +118,19 @@ int mostrarNombreS(empleados array[], int LARGO)
 	return retorno;
 }
 
-int eliminarEmpleado(empleados trabajador[], int* i)
+int eliminarEmpleado(empleados trabajador[], int i)
 {
 	int retorno = -1;
-	int baja = *i;
+
 	if(trabajador != NULL)
 	{
-		trabajador[baja].isEmpty = VACIO;
+		trabajador[i].isEmpty = VACIO;
 		retorno = 0;
 	}
 	return retorno;
 }
 
-int modificarEmpleado(empleados trabajador[], int* i)
+int modificarEmpleado(empleados trabajador[], int i)
 {
 	char respuesta;
 	char auxNombre[51];
@@ -158,25 +158,25 @@ int modificarEmpleado(empleados trabajador[], int* i)
 				printf("Ingrese el nombre modificado del trabajador: ");
 				fflush(stdin);
 				gets(auxNombre); //strcpy
-				strcpy(trabajador[*i].nombre, auxNombre);
+				strcpy(trabajador[i].nombre, auxNombre);
 			//	trabajador[i].nombre[51] = auxNombre[51];
 				break;
 				case 2:
 				printf("Ingrese el apellido modificado del trabajador: ");
 				fflush(stdin);
 				gets(auxApellido);
-				strcpy(trabajador[*i].apellido, auxApellido);
+				strcpy(trabajador[i].apellido, auxApellido);
 		//		trabajador[i].apelido[51] = auxApellido[51];
 				break;
 				case 3:
 				printf("Ingrese el salario modificado del trabajador: ");
 		    	scanf("%f", &auxSalario);
-		    	trabajador[*i].salario = auxSalario;
+		    	trabajador[i].salario = auxSalario;
 				break;
 				case 4:
 				printf("Ingrese el sector modificado del trabajador: ");
 		    	scanf("%d", &auxSector);
-				trabajador[*i].sector = auxSector;
+				trabajador[i].sector = auxSector;
 				break;
 			}
 			printf("Desea modificar algo mas? (s/n): ");

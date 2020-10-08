@@ -46,14 +46,14 @@ do{
 			break;
 		case 2:
 			printf("Ingrese la id del empleado a modificar: ");
-			scanf("%d",identificacion );
-			modificarEmpleado(arrayEmpleado, &identificacion);
+			scanf("%d", &identificacion );
+			modificarEmpleado(arrayEmpleado, identificacion);
 			system("pause");
 			break;
 		case 3:
 			printf("Ingrese la id del empleado a borrar : ");
-		    scanf("%d", identificacion );
-			eliminarEmpleado(arrayEmpleado, &identificacion);
+		    scanf("%d", &identificacion );
+			eliminarEmpleado(arrayEmpleado, identificacion);
 			break;
 		case 4:
 			mostrarNombreS(arrayEmpleado, NOMINA); //Muestra uno por uno siempre y cuando no tenga un VACIO en isEmpty

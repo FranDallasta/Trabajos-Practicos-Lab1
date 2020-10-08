@@ -22,9 +22,9 @@ typedef struct{
 
 int iniciarlizarListado(empleados array[], int LARGO);
 int buscarEmpty(empleados array[], int LARGO, int* posicion);
-empleados cargarEmpleado(int i);
+empleados cargarEmpleado();
 int cargarEmpleadoS(empleados array[], int LARGO,  int* i);
 void mostrarNombre(empleados trabajador);
 int mostrarNombreS(empleados array[], int LARGO);
-int eliminarEmpleado(empleados trabajador[], int* i);
-int modificarEmpleado(empleados trabajador[], int* i);
+int eliminarEmpleado(empleados trabajador[], int i);
+int modificarEmpleado(empleados trabajador[], int i);
