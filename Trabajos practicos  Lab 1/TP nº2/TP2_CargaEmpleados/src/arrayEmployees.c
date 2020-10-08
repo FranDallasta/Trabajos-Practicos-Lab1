@@ -27,7 +27,7 @@ int iniciarlizarListado(empleados array[], int LARGO)
 	return retorno;
 }
 
-int buscarEmpty(empleados array[], int LARGO, int* posicion)
+int buscarEmpty(empleados array[], int LARGO, int* posicion) //esta bien
 {
 	int retorno =-1;
 	int i;
@@ -45,10 +45,10 @@ int buscarEmpty(empleados array[], int LARGO, int* posicion)
 	return retorno;
 }
 
-empleados cargarEmpleado()//int i
+empleados cargarEmpleado(int i)//int i
 {
 	empleados trabajador;
-	//trabajador.id = i;
+	trabajador.id = i;
 	printf("Ingrese el nombre del trabajador: ");
 	fflush(stdin);
 	gets(trabajador.nombre);
@@ -65,28 +65,31 @@ empleados cargarEmpleado()//int i
 
 int cargarEmpleadoS(empleados array[], int LARGO, int* i)
 {
-	char respuesta;
-	int retorno = -1;
+	//char respuesta;
+	int retorno;
 	int posicion = 0;
 
 	if(array != NULL && LARGO >= 0)
 	{
-		do{
-			*i = *i + 1;
+	//	do{
+
 			if(buscarEmpty(array, LARGO, &posicion)==0)
 			{
-				array[posicion].id = *i;
-				array[posicion] =cargarEmpleado();
+				//*i = *i + 1;
+				//array[posicion].id = *i;
+				array[posicion] =cargarEmpleado(*i);
+				*i = *i +1;
+				retorno = 0;
 			}
 			else
 			{
 				printf("No hay lugar");
+				retorno = -1;
 			}
-			printf("\nDesea ingresar otro empleado?(s/n):  ");
-			fflush(stdin);
-			scanf("%c", &respuesta);
-			retorno = 0;
-		}while(respuesta != 'n' || respuesta == 's'); //sacar el while
+			//printf("\nDesea ingresar otro empleado?(s/n):  ");
+		     //	fflush(stdin);
+			//scanf("%c", &respuesta);
+			//	}while(respuesta != 'n' || respuesta == 's'); //sacar el while
 	}
 	return retorno;
 }
@@ -118,71 +121,89 @@ int mostrarNombreS(empleados array[], int LARGO)
 	return retorno;
 }
 
-int eliminarEmpleado(empleados trabajador[], int i)
+int eliminarEmpleado(empleados trabajador[], int LARGO,  int pedirId)
 {
-	int retorno = -1;
+	int j;
+	int retorno =-1;
 
-	if(trabajador != NULL)
+	for(j = 0; j <LARGO; j++) //pedirId = identificacion
 	{
-		trabajador[i].isEmpty = VACIO;
-		retorno = 0;
+		if(trabajador[j].isEmpty==LLENO && trabajador[j].id == pedirId)
+		{
+			trabajador[j].isEmpty= VACIO;
+			break;
+		}
 	}
-	return retorno;
+
+		return retorno;
 }
 
-int modificarEmpleado(empleados trabajador[], int i)
+int modificarEmpleado(empleados trabajador[],int LARGO, int pedirId)
 {
-	char respuesta;
+	//char respuesta;
 	char auxNombre[51];
 	char auxApellido[51];
 	float auxSalario;
 	int auxSector;
 	int opcion;
 	int retorno = -1;
+	int lugar =0;
+	int j;
+
+	for(j = 0; j <LARGO; j++) //pedirId = identificacion
+	{
+		if(trabajador[j].id == pedirId)
+		{
+			lugar = j;
+			break;
+		}
+	}
 
 	if(trabajador != NULL)
 	{
 		//trabajador[i].isEmpty = VACIO; // al estar el espacio VACIO, es decir, en 0 (logico) indica que puede llenarse
 		//trabajador[i]=cargarEmpleado(i);
-
+		do{
+			system("cls");
 		printf("\n 1) Modificar Nombre");
 		printf("\n 2) Modificar Apellido");
 		printf("\n 3) Modificar Salario");
 		printf("\n 4) Modificar Sector");
+		printf("\n 5) SALIR ");
 		printf("\n Ingrese una opcion: ");
 		scanf("%d", &opcion);
-		do{
+
 			switch (opcion)
 			{
 				case 1:
 				printf("Ingrese el nombre modificado del trabajador: ");
 				fflush(stdin);
 				gets(auxNombre); //strcpy
-				strcpy(trabajador[i].nombre, auxNombre);
+				strcpy(trabajador[lugar].nombre, auxNombre);
 			//	trabajador[i].nombre[51] = auxNombre[51];
 				break;
 				case 2:
 				printf("Ingrese el apellido modificado del trabajador: ");
 				fflush(stdin);
 				gets(auxApellido);
-				strcpy(trabajador[i].apellido, auxApellido);
+				strcpy(trabajador[lugar].apellido, auxApellido);
 		//		trabajador[i].apelido[51] = auxApellido[51];
 				break;
 				case 3:
 				printf("Ingrese el salario modificado del trabajador: ");
 		    	scanf("%f", &auxSalario);
-		    	trabajador[i].salario = auxSalario;
+		    	trabajador[lugar].salario = auxSalario;
 				break;
 				case 4:
 				printf("Ingrese el sector modificado del trabajador: ");
 		    	scanf("%d", &auxSector);
-				trabajador[i].sector = auxSector;
+				trabajador[lugar].sector = auxSector;
 				break;
 			}
-			printf("Desea modificar algo mas? (s/n): ");
-			fflush(stdin);
-			scanf("%c", &respuesta);
-		}while(respuesta != 'n' || respuesta == 's'); //sacar wwhile poner salida
+			//printf("Desea modificar algo mas? (s/n): ");
+			//fflush(stdin);
+			//scanf("%c", &respuesta);
+		}while(opcion != 5); //sacar wwhile poner salida
 		retorno = 0;
 	}
 	return retorno;

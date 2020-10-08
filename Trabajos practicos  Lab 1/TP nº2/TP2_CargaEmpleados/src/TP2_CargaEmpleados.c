@@ -22,7 +22,7 @@ int main(void) {
 	empleados arrayEmpleado[NOMINA];
 	int opcion;
 	int identificacion = 1;
-	//int opcion2;
+	int pedirId;
 
 
 	iniciarlizarListado(arrayEmpleado, NOMINA);
@@ -42,18 +42,19 @@ do{
 		case 1:
 			cargarEmpleadoS(arrayEmpleado, NOMINA, &identificacion); //Carga de forma secuencial todos los lugares del array que no esten en 1(LLENO).
 			//printf("%d",identificacion );
+			//if funciono;
 			system("pause");
 			break;
 		case 2:
 			printf("Ingrese la id del empleado a modificar: ");
-			scanf("%d", &identificacion );
-			modificarEmpleado(arrayEmpleado, identificacion);
+			scanf("%d", &pedirId);
+			modificarEmpleado(arrayEmpleado,NOMINA, pedirId);
 			system("pause");
 			break;
 		case 3:
 			printf("Ingrese la id del empleado a borrar : ");
-		    scanf("%d", &identificacion );
-			eliminarEmpleado(arrayEmpleado, identificacion);
+		    scanf("%d", &pedirId);
+			eliminarEmpleado(arrayEmpleado, NOMINA ,pedirId);
 			break;
 		case 4:
 			mostrarNombreS(arrayEmpleado, NOMINA); //Muestra uno por uno siempre y cuando no tenga un VACIO en isEmpty
