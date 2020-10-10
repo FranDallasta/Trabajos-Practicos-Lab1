@@ -29,7 +29,7 @@ int main(void) {
 do{
 	printf("Ingrese una de las siguientes opciones: ");
 	printf("\n1) Dar de ALTA empleado/s ");
-	printf("\n2) Modificar un empleado ");// modificar no es reescribir, tengo que cambiar la funcion
+	printf("\n2) Modificar un empleado ");
 	printf("\n3) Dar de BAJA un empleado ");
 	printf("\n4) Informar listado de empleados ");
 	printf("\n5) SALIR DEL PROGRAMA");
@@ -40,8 +40,7 @@ do{
 	switch(opcion)
 	{
 		case 1:
-			cargarEmpleadoS(arrayEmpleado, NOMINA, &identificacion); //Carga de forma secuencial todos los lugares del array que no esten en 1(LLENO).
-			//printf("%d",identificacion );
+			cargarEmpleadoS(arrayEmpleado, NOMINA, &identificacion);
 			//if funciono;
 			system("pause");
 			break;
@@ -57,7 +56,8 @@ do{
 			eliminarEmpleado(arrayEmpleado, NOMINA ,pedirId);
 			break;
 		case 4:
-			mostrarNombreS(arrayEmpleado, NOMINA); //Muestra uno por uno siempre y cuando no tenga un VACIO en isEmpty
+			ordenarEmpleados (arrayEmpleado, NOMINA);
+			mostrarNombreS(arrayEmpleado, NOMINA); //Meter ordenamiento
 			system("pause");
 			break;
 		case 5:
