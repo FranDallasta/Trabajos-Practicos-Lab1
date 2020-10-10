@@ -13,17 +13,13 @@
 #include <string.h>
 #include "arrayEmployees.h"
 
-#define NOMINA 10 //1000 EMPLEADOS COMO MAXIMO
-
-
-
+#define NOMINA 1000
 
 int main(void) {
 	empleados arrayEmpleado[NOMINA];
 	int opcion;
 	int identificacion = 1;
 	int pedirId;
-
 
 	iniciarlizarListado(arrayEmpleado, NOMINA);
 do{
@@ -41,7 +37,6 @@ do{
 	{
 		case 1:
 			cargarEmpleadoS(arrayEmpleado, NOMINA, &identificacion);
-			//if funciono;
 			system("pause");
 			break;
 		case 2:
@@ -57,7 +52,7 @@ do{
 			break;
 		case 4:
 			ordenarEmpleados (arrayEmpleado, NOMINA);
-			mostrarNombreS(arrayEmpleado, NOMINA); //Meter ordenamiento
+			mostrarNombreS(arrayEmpleado, NOMINA);
 			system("pause");
 			break;
 		case 5:
