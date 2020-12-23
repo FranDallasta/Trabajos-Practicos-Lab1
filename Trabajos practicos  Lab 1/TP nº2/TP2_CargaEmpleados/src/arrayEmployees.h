@@ -85,9 +85,17 @@ int eliminarEmpleado(empleados trabajador[], int LARGO,  int pedirId);
 int modificarEmpleado(empleados trabajador[],int LARGO, int pedirId);
 
 /*
- * \brief elimina un dato del array de tipo empleado
+ * \brief ordena los empleados
  * \param empleados array de tipo empleados.
  * \param int largo del array.
- * \return int.
+ * \return void
  */
 void ordenarEmpleados (empleados trabajador[],int LARGO);
+
+/*
+ * \brief analiza la informacion en relacion a los salarios
+ * \param empleados array de tipo empleados.
+ * \param int largo del array.
+ * \return void
+ */
+void arribaPromedio (empleados trabajador[],int LARGO);

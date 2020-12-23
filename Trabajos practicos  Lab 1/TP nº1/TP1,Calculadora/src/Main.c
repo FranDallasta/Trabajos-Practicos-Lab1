@@ -6,12 +6,7 @@ int main(void) {
 	//Declaracion de variables
 	float A;
 	float B;
-	float suma;
-	float resta;
-	float division;
-	float producto;
-	int factorA;
-	int factorB;
+	float resultado;
 	int opcion;
 	int flagVacio = 0;
 
@@ -24,7 +19,12 @@ int main(void) {
 			printf("\n 4) Division");
 			printf("\n 5) Producto");
 			printf("\n 6) Factorial");
-			printf("\n 7) SALIR");
+			printf("\n 7) SALIR\n");
+			if( flagVacio == 1)
+					{
+						printf("\nEl operando A es %.2f", A);
+						printf("\nEl operando B es %.2f", B);
+					}
 			printf("\n\n Ingrese la opcion deseada: ");
 			scanf("%d", &opcion);
 			system("cls");
@@ -38,35 +38,34 @@ int main(void) {
 	switch(opcion){
 		case 1:
 		{
-			printf("Ingrese un numero A= "); //Ingreso de numeros
-			scanf("%f", &A);
-			printf("\n Ingrese un numero B= ");
-			scanf("%f", &B);
+			ingresarNum (&A);
+			ingresarNum (&B);
 			flagVacio =1;
+			system("cls");
 			break;
 		}
 		case 2:		//Funciones
 		{
-			suma = sumar(A,B);
-			printf("\nLa suma da %.2f\n", suma);
+			resultado = sumar(A,B);
+			printf("\nLa suma da %.2f\n", resultado);
 			system("pause");
 			system("cls");
 			break;
 		}
 		case 3:
 		{
-			resta= restar (A,B);
-			printf("\nLa resta da %.2f\n", resta);
+			resultado= restar (A,B);
+			printf("\nLa resta da %.2f\n", resultado);
 			system("pause");
 			system("cls");
 			break;
 		}
 		case 4:
 		{
-			division = dividir(A,B);
+			resultado = dividir(A,B);
 			if(B!=0)
 			{
-				printf("\nLa division es %.2f\n ", division);
+				printf("\nLa division es %.2f\n ", resultado);
 			}
 			system("pause");
 			system("cls");
@@ -74,18 +73,19 @@ int main(void) {
 		}
 		case 5:
 		{
-			producto = multilicar(A,B);
-			printf("\nEl producto da %.2f\n", producto);
+			resultado = multilicar(A,B);
+			printf("\nEl producto da %.2f\n",resultado);
 			system("pause");
 			system("cls");
 			break;
 		}
 		case 6:
 		{
-			factorA = factorial(A);
-			printf("\nEl factorial (A) da %d ", factorA);
-			factorB = factorial(B);
-			printf("\nEl factorial (B) da %d \n", factorB);
+			printf("\nEl factorial solo trabajara con la parte entera en caso de ser decimal");
+			resultado = factorial(A);
+			printf("\nEl factorial (A) da %f ", resultado);
+			resultado = factorial(B);
+			printf("\nEl factorial (B) da %f \n", resultado);
 			system("pause");
 			system("cls");
 			break;
@@ -95,6 +95,12 @@ int main(void) {
 			printf("\nSaliendo del programa...\n"); //Salida del programa
 			system("pause");
 			return EXIT_SUCCESS;
+		}
+		default:
+		{
+			printf("\nOpcion Incorrecta...\n");
+			system("pause");
+			system("cls");
 		}
 	}
 	}while(opcion != 7);

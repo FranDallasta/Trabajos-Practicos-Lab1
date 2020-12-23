@@ -152,12 +152,13 @@ int modificarEmpleado(empleados trabajador[],int LARGO, int pedirId)
 	if(trabajador != NULL)
 	{
 		do{
-			system("cls");
+		system("cls");
 		printf("\n 1) Modificar Nombre");
 		printf("\n 2) Modificar Apellido");
 		printf("\n 3) Modificar Salario");
 		printf("\n 4) Modificar Sector");
-		printf("\n 5) SALIR ");
+		printf("\n 5) SALIR \n");
+		mostrarNombre(trabajador[j]);
 		printf("\n Ingrese una opcion: ");
 		scanf("%d", &opcion);
 
@@ -194,25 +195,19 @@ int modificarEmpleado(empleados trabajador[],int LARGO, int pedirId)
 
 void ordenarEmpleados (empleados trabajador[],int LARGO)
 {
-	//int retorno = -1;
-
 	char auxNombre[51];
 	char auxApellido[51];
 	float auxSalario;
 	int auxSector;
+	int auxIsEmprty;
 	int auxId;
-	int flag = 1;
 	int i;
 	int j;
 
 	if (trabajador != NULL && LARGO > 0)
 	{
-		while(flag != 1)
-		{
-			flag = 0;
-			for ( i =0; i< LARGO-1; i++)
-			{
-				j = i+ 1;
+		for (i = 0; i < LARGO - 1; i++) {
+			for (j = i + 1; j < LARGO; j++) {
 
 				if(strcmp(trabajador[i].apellido,trabajador[j].apellido)>0)
 				{
@@ -235,6 +230,10 @@ void ordenarEmpleados (empleados trabajador[],int LARGO)
 					auxId = trabajador[i].id;
 					trabajador[i].id = trabajador[j].id;
 					trabajador[j].id = auxId;
+
+					auxIsEmprty = trabajador[i].isEmpty;
+					trabajador[i].isEmpty = trabajador[j].isEmpty;
+					trabajador[j].isEmpty = auxIsEmprty;
 				}
 				else if (strcmp(trabajador[i].apellido,trabajador[j].apellido) ==0 && (trabajador[i].sector > trabajador[j].sector))
 				{
@@ -257,12 +256,46 @@ void ordenarEmpleados (empleados trabajador[],int LARGO)
 					auxId = trabajador[i].id;
 					trabajador[i].id = trabajador[j].id;
 					trabajador[j].id = auxId;
+
+					auxIsEmprty = trabajador[i].isEmpty;
+					trabajador[i].isEmpty = trabajador[j].isEmpty;
+					trabajador[j].isEmpty = auxIsEmprty;
 				}
-				flag = 1;
 			}
 		}
-		//retorno = 0;
 	}
-	//return retorno;
 }
 
+void arribaPromedio (empleados trabajador[],int LARGO)
+{
+	int i;
+	int acumEmpleados = 0;
+	int sobrePromedio =0;
+	float acumSalario = 0;
+	float salarioPromedio = 0;
+
+
+	if (trabajador != NULL && LARGO > 0)
+	{
+		for (i = 0; i < LARGO; i++)
+		{
+			if (trabajador[i].isEmpty != VACIO) // Recorre el array acumulando el salario y los trabajadores
+			{
+				acumSalario = acumSalario + trabajador[i].salario;
+				acumEmpleados++;
+			}
+		}
+
+		salarioPromedio = acumSalario/acumEmpleados; // Hace el promedio
+
+		for (i = 0; i < LARGO; i++)
+		{
+			if (trabajador[i].isEmpty != VACIO && trabajador[i].salario > salarioPromedio ) // Cuenta los que estan por encima de la media
+			{
+				sobrePromedio++;
+			}
+		}
+		printf("\nLa sumatoria de salarios da un total de $%.2f.\n", acumSalario);
+		printf("La cantidad de empleados que superan el salario minimo ($%.2f) es de %d.\n",salarioPromedio, sobrePromedio);
+	}
+}

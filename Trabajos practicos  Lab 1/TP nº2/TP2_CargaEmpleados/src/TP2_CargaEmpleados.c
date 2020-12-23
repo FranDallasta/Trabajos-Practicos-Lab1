@@ -20,23 +20,32 @@ int main(void) {
 	int opcion;
 	int identificacion = 1;
 	int pedirId;
+	int flagCarga = 0;
 
 	iniciarlizarListado(arrayEmpleado, NOMINA);
 do{
-	printf("Ingrese una de las siguientes opciones: ");
-	printf("\n1) Dar de ALTA empleado/s ");
-	printf("\n2) Modificar un empleado ");
-	printf("\n3) Dar de BAJA un empleado ");
-	printf("\n4) Informar listado de empleados ");
-	printf("\n5) SALIR DEL PROGRAMA");
-	printf("\n\n Opcion Seleccionada: ");
-	scanf("%d",&opcion);
-
+	do{
+		printf("Ingrese una de las siguientes opciones: ");
+		printf("\n1) Dar de ALTA empleado/s ");
+		printf("\n2) Modificar un empleado ");
+		printf("\n3) Dar de BAJA un empleado ");
+		printf("\n4) Informar listado de empleados ");
+		printf("\n5) SALIR DEL PROGRAMA");
+		printf("\n\n Opcion Seleccionada: ");
+		scanf("%d",&opcion);
+		if(flagCarga == 0 && opcion!=1)
+		{
+			printf("\nNo hay trabajadores cargados\n");
+			system("pause");
+		}
+		system("cls");
+	}while((flagCarga == 0 && opcion!=1));
 
 	switch(opcion)
 	{
 		case 1:
 			cargarEmpleadoS(arrayEmpleado, NOMINA, &identificacion);
+			flagCarga = 1 ;
 			system("pause");
 			break;
 		case 2:
@@ -53,6 +62,7 @@ do{
 		case 4:
 			ordenarEmpleados (arrayEmpleado, NOMINA);
 			mostrarNombreS(arrayEmpleado, NOMINA);
+			arribaPromedio (arrayEmpleado, NOMINA);
 			system("pause");
 			break;
 		case 5:

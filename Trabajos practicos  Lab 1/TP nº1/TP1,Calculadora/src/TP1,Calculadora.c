@@ -21,7 +21,7 @@ float dividir (float A, float B)
 	float division;
 	if(B == 0)
 		{
-			printf("\n No puede realizarse la division.");
+			printf("\n No puede realizarse la division.\n");
 			return 0;
 		}
 		else
@@ -49,5 +49,20 @@ int factorial (int A)
 	return factorial;
 }
 
+int ingresarNum (float * numero)
+{
+    int numeroCorrecto;
 
+    fflush(stdin);
+    printf("Ingrese el numero: ");
+    numeroCorrecto = scanf("%f",numero);
+    while(!numeroCorrecto)
+    {
+        printf("\nError por dato invalido");
+        fflush(stdin);
+        printf("\nIngrese un numero: ");
+        numeroCorrecto = scanf("%f",numero);
+    }
 
+    return 0;
+}

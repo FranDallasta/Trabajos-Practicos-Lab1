@@ -42,4 +42,11 @@ float multilicar (float , float);
  */
 int factorial (int );
 
+/*
+*\brief Ingresa un número
+*\param Puntero del número ingresado
+*\return 0 si es correcto
+*/
+int ingresarNum (float * numero);
+
 #endif /* TP1_CALCULADORA_H_ */
